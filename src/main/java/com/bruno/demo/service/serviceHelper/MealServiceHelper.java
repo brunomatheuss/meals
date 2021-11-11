@@ -11,23 +11,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 public class MealServiceHelper {
 
-	public String callApi() throws JsonMappingException, JsonProcessingException {
+	private WebClient webClient = WebClient.create("https://www.themealdb.com");
 
-		WebClient webClient = WebClient.create();
+	public String callApi(String strMeal) throws JsonMappingException, JsonProcessingException {
 		
-		String responseJson = webClient.get().uri("https://www.themealdb.com/api/json/v1/1/search.php?s=").retrieve()
-				.bodyToMono(String.class).block();
+		String responseJson = webClient.get()
+				.uri(uriBuilder -> uriBuilder.path("/api/json/v1/1/search.php").queryParam("s", strMeal).build())
+				.retrieve().bodyToMono(String.class).block();
 
-		
 		return responseJson;
 	}
-	
+
 	public Meals jsonToMeal(String json) throws JsonMappingException, JsonProcessingException {
 		ObjectMapper objectMapper = new ObjectMapper();
-		
+
 		Meals meal = objectMapper.readValue(json, Meals.class);
-		
+
 		return meal;
 	}
-	
+
 }

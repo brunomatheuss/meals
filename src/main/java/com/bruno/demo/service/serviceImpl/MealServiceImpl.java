@@ -17,23 +17,16 @@ public class MealServiceImpl implements MealService {
 	private MealServiceHelper mealServiceHelper;
 
 	public Meals findAll() throws JsonMappingException, JsonProcessingException {
-		String json = mealServiceHelper.callApi();
+		String json = mealServiceHelper.callApi(null);
 		Meals meals = mealServiceHelper.jsonToMeal(json);
 		return meals;
 	}
 
 	@Override
-	public Meal findById(String idMeal) throws JsonMappingException, JsonProcessingException {
-		String json = mealServiceHelper.callApi();
+	public Meal findByName(String strMeal) throws JsonMappingException, JsonProcessingException {
+		String json = mealServiceHelper.callApi(strMeal);
 		Meals meals = mealServiceHelper.jsonToMeal(json);
-		Meal meal = null;
-		
-		for(int i = 0 ; i < meals.getMeals().size(); i++) {
-			if(meals.getMeals().get(i).getIdMeal().equals(idMeal)) {
-				meal = meals.getMeals().get(i);
-				break;
-			}
-		}
+		Meal meal = meals.getMeals().get(0);
 		return meal;
 	}
 

@@ -24,9 +24,9 @@ public class MealController {
 		return mealService.findAll();
 	}
 	
-	@GetMapping("/{idMeal}")
-	Meal findById(@PathVariable String idMeal) throws JsonMappingException, JsonProcessingException {
-		return mealService.findById(idMeal);
+	@GetMapping("/{strMeal}")
+	Meal findByName(@PathVariable String strMeal) throws JsonMappingException, JsonProcessingException {
+		return mealService.findByName(strMeal);
 	}
 	
 }

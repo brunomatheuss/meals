@@ -9,6 +9,6 @@ public interface MealService {
 
 	public Meals findAll() throws JsonMappingException, JsonProcessingException;
 	
-	public Meal findById(String idMeal) throws JsonMappingException, JsonProcessingException;
+	public Meal findByName(String strMeal) throws JsonMappingException, JsonProcessingException;
 	
 }
