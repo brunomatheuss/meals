@@ -16,14 +16,14 @@ public class MealServiceImpl implements MealService {
 	@Autowired
 	private MealServiceHelper mealServiceHelper;
 
-	public Meals buscar() throws JsonMappingException, JsonProcessingException {
+	public Meals findAll() throws JsonMappingException, JsonProcessingException {
 		String json = mealServiceHelper.callApi();
 		Meals meals = mealServiceHelper.jsonToMeal(json);
 		return meals;
 	}
 
 	@Override
-	public Meal buscarPorId(String idMeal) throws JsonMappingException, JsonProcessingException {
+	public Meal findById(String idMeal) throws JsonMappingException, JsonProcessingException {
 		String json = mealServiceHelper.callApi();
 		Meals meals = mealServiceHelper.jsonToMeal(json);
 		Meal meal = null;

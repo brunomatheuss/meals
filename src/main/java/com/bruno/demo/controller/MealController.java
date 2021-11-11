@@ -19,14 +19,14 @@ public class MealController {
 	@Autowired
 	private MealService mealService;
 	
-	@GetMapping("buscar")
-	Meals buscar() throws JsonMappingException, JsonProcessingException {
-		return mealService.buscar();
+	@GetMapping("findAll")
+	Meals findAll() throws JsonMappingException, JsonProcessingException {
+		return mealService.findAll();
 	}
 	
-	@GetMapping("buscarPorId")
-	Meal buscarPorId(@RequestParam String idMeal) throws JsonMappingException, JsonProcessingException {
-		return mealService.buscarPorId(idMeal);
+	@GetMapping("findById")
+	Meal findById(@RequestParam String idMeal) throws JsonMappingException, JsonProcessingException {
+		return mealService.findById(idMeal);
 	}
 	
 }

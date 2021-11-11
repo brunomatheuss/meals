@@ -7,8 +7,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 
 public interface MealService {
 
-	public Meals buscar() throws JsonMappingException, JsonProcessingException;
+	public Meals findAll() throws JsonMappingException, JsonProcessingException;
 	
-	public Meal buscarPorId(String idMeal) throws JsonMappingException, JsonProcessingException;
+	public Meal findById(String idMeal) throws JsonMappingException, JsonProcessingException;
 	
 }
